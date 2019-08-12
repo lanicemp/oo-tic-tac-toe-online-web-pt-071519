@@ -1,3 +1,5 @@
+require "pry"
+
 class TicTacToe 
 
   def initialize
@@ -18,14 +20,46 @@ class TicTacToe
 
   def display_board
     
-    puts " X | X | X "
+    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"
-    puts " X | O | O "
+    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
     puts "-----------"
-    puts " O | X | X "
-    
-    
-    puts " #{"
+    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end 
+  
+  def input_to_index(users_input) 
+    users_input.to_i - 1
+    
+  end 
+  
+  
+  def move(location, character)
+    @board[location.to_i ] = character
+  end  
+  
+  def position_taken?(position)
+    if @board[position] == "X" || @board[position] == "O"
+      true
+    else
+      false
+    end
+  end 
+    
+def valid_move?(position)
+ # position = position.to_i
+  if position.between?(0,8) && !position_taken?(position)
+    true 
+  else 
+    false 
+  end 
+end
 
+def turn_count
+ @board.count{|i| i == "X" || i == "O"}
+end 
+ 
+ def current_player
+   
+ end 
+    
 end 
